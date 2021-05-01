@@ -45,21 +45,23 @@ function updateCache(location) {
     return CACHE[location.type].location;
 }
 
-function get(opts) {
+function get(opts = {}) {
     return _getLocation({type: DEFAULT_TYPE, ...opts})
         .then(updateCache);
 }
 
-function getSync(opts = {type: DEFAULT_TYPE}) {
-    const cached = CACHE[opts.type];
+function getSync(opts = {}) {
+    const {type = DEFAULT_TYPE} = opts;
+    const cached = CACHE[type];
     if (!cached) {
         return null;
     }
     return cached.location;
 }
 
-function getThrottle(opts = {type: DEFAULT_TYPE}, interval = 60000) {
-    if (checkThrottle(opts.type, interval)) {
+function getThrottle(opts = {}, interval = 60000) {
+    const {type = DEFAULT_TYPE} = opts;
+    if (checkThrottle(type, interval)) {
         return get(opts);
     } else {
         return Promise.resolve(getSync(opts));

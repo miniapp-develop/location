@@ -7,7 +7,7 @@ Page({
     },
 
     onTapGetLocationSync(e) {
-        console.log('onTapGetLocationSync', location.getSync({}));
+        console.log('onTapGetLocationSync', location.getSync());
     },
 
     onTapGetLocation(e) {
