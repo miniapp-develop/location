@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/xesam/miniapp-kit",
   "dependencies": {
-    "@mini-dev/vendor": "0.0.1"
+    "@mini-dev/vendor": "0.0.2"
   },
   "devDependencies": {},
   "keywords": [

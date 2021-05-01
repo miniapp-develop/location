@@ -1,7 +1,7 @@
-import wxx from './wxx';
+const {ex} = require('@mini-dev/vendor');
 
 function _getLocation(opts) {
-    return wxx('getLocation')(opts).then(res => {
+    return ex('getLocation')(opts).then(res => {
         return {
             type: opts.type,
             ...res
@@ -10,11 +10,11 @@ function _getLocation(opts) {
 }
 
 function authorize(scope = 'userLocation') {
-    return wxx('getSetting')().then(res => {
+    return ex('getSetting')().then(res => {
         if (res.authSetting[`scope.${scope}`]) {
             return Promise.resolve({status: 'ok'});
         } else {
-            return wxx('authorize')({
+            return ex('authorize')({
                 scope: `scope.${scope}`
             }).then(() => {
                 return Promise.resolve({status: 'ok'});
