@@ -1,0 +1,27 @@
+{
+  "name": "@mini-dev/location",
+  "version": "0.0.1",
+  "description": "miniapp location tool",
+  "miniprogram": "libs",
+  "main": "libs/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:xesam/miniapp-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xesam/miniapp-kit"
+  },
+  "homepage": "https://github.com/xesam/miniapp-kit",
+  "dependencies": {
+    "@mini-dev/vendor": "0.0.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "miniapp"
+  ],
+  "author": "xesam",
+  "license": "ISC"
+}

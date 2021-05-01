@@ -1,0 +1,3 @@
+<view>
+    <button bind:tap="onTapGetLocation">getLocation</button>
+</view>
