@@ -1,3 +1,6 @@
 <view>
+    <button bind:tap="onTapGetLocationSync">getLocationSync</button>
     <button bind:tap="onTapGetLocation">getLocation</button>
+    <button bind:tap="onTapGetThrottle">getThrottle</button>
+    <button bind:tap="onTapGetThrottle_5s">getThrottle 5s</button>
 </view>

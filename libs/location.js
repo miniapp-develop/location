@@ -9,21 +9,6 @@ function _getLocation(opts) {
     });
 }
 
-let LAST_CACHE = {
-    time: 0,
-    location: null
-};
-
-function checkThrottle(interval) {
-    return Date.now() - LAST_CACHE.time >= interval;
-}
-
-function updateCache(location) {
-    LAST_CACHE.time = Date.now();
-    LAST_CACHE.location = location;
-    return LAST_CACHE.location;
-}
-
 function authorize(scope = 'userLocation') {
     return wxx('getSetting')().then(res => {
         if (res.authSetting[`scope.${scope}`]) {
@@ -40,20 +25,44 @@ function authorize(scope = 'userLocation') {
     })
 }
 
+const DEFAULT_TYPE = 'wgs84';
+
+let CACHE = {};
+
+function checkThrottle(type, interval) {
+    const cached = CACHE[type];
+    if (!cached) {
+        return true;
+    }
+    return Date.now() - cached.time >= interval;
+}
+
+function updateCache(location) {
+    CACHE[location.type] = {
+        time: Date.now(),
+        location: location
+    }
+    return CACHE[location.type].location;
+}
+
 function get(opts) {
-    return _getLocation({type: 'wgs84', ...opts})
+    return _getLocation({type: DEFAULT_TYPE, ...opts})
         .then(updateCache);
 }
 
-function getSync() {
-    return LAST_CACHE.location;
+function getSync(opts = {type: DEFAULT_TYPE}) {
+    const cached = CACHE[opts.type];
+    if (!cached) {
+        return null;
+    }
+    return cached.location;
 }
 
-function getThrottle(opts = {}, interval = 60000) {
-    if (checkThrottle(interval)) {
+function getThrottle(opts = {type: DEFAULT_TYPE}, interval = 60000) {
+    if (checkThrottle(opts.type, interval)) {
         return get(opts);
     } else {
-        return Promise.resolve(getSync());
+        return Promise.resolve(getSync(opts));
     }
 }
 
