@@ -1,4 +1,4 @@
-import {location} from '../../libs/index';
+const location = require('../../libs/index');
 
 Page({
     data: {},

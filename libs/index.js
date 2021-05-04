@@ -1,5 +1,1 @@
-import location from './location';
-
-module.exports = {
-    location
-}
+module.exports = require('./location');

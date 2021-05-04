@@ -68,7 +68,7 @@ function getThrottle(opts = {}, interval = 60000) {
     }
 }
 
-export default {
+module.exports = {
     authorize,
     get,
     getSync,
