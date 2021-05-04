@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:xesam/miniapp-kit.git"
+    "url": "git+git@github.com:miniapp-develop/location.git"
   },
   "bugs": {
-    "url": "https://github.com/xesam/miniapp-kit"
+    "url": "https://github.com/miniapp-develop/location"
   },
-  "homepage": "https://github.com/xesam/miniapp-kit",
+  "homepage": "https://github.com/miniapp-develop/location",
   "dependencies": {
     "@mini-dev/vendor": "0.0.2"
   },
